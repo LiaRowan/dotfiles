@@ -1,0 +1,20 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.vimrc: vim/vimrc
+    ~/.zshrc: zsh/zshrc
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.vim: vim
+
+- shell:
+  - git submodule update --init --recursive
+  - rm -rf ~/.zprezto
+  - zsh && git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+  - source zsh/zshrc
+  - chsh -s /bin/zsh
+

@@ -1,0 +1,29 @@
+# Export PATH
+export PATH=/usr/local/bin:$PATH
+
+# Source Prezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Set Theme
+autoload -Uz promptinit
+promptinit
+prompt paradox
+
+### Aliases ###
+# Shortcuts
+alias proj='cd ~/projects'
+alias sbox='source ~/.ssh/sbox.sh'
+# Git
+alias gc="git clone"
+alias gs="git status"
+alias gd="git diff"
+alias ga="git add"
+alias gi="git commit"
+alias gh="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+alias go="git checkout"
+alias gb="git branch"
+alias gpom="git push origin master"
+alias gprom='git pull --rebase origin master'
+
