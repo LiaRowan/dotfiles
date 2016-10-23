@@ -90,7 +90,7 @@ set noswapfile            " disable vim swap file
 set nocompatible          " disable vi compatibility
 
 set history=1000          " remember more commands and search history
-set undolevels=1000       " use many muchos levels of undo
+set undolevels=1000       " we must go deeper
 
 let g:netrw_dirhistmax=0  " disable netrw history file
 
@@ -160,6 +160,21 @@ nnoremap <leader>u :GundoToggle<CR>
 " Neomake {{{
 " lint files on open and save
 autocmd! BufWritePost,BufEnter * Neomake
+" open error window automatically if lint fails
+" this is currently broken (for me at least)
+" hopefully it will be resolved soon. I'll open
+" an issue on github if not
+" let g:neomake_open_list = 2
+
+" change default error symbols
+let g:neomake_warning_sign = {
+  \ 'text': '❌',
+  \ 'texthl': 'WarningMsg',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': '⚠️',
+  \ 'texthl': 'ErrorMsg',
+  \ }
 
 " }}}
 " NerdTree {{{
