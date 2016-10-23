@@ -10,9 +10,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
+Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'scrooloose/syntastic'
 Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
@@ -157,31 +157,14 @@ let g:gundo_right=1
 nnoremap <leader>u :GundoToggle<CR>
 
 " }}}
+" Neomake {{{
+" lint files on open and save
+autocmd! BufWritePost,BufEnter * Neomake
+
+" }}}
 " NerdTree {{{
 " open NerdTree with ctr-n
 nmap <silent><leader>t :NERDTreeTabsToggle<CR>
-
-" }}}
-" Syntastic {{{
-" don't lint file on save-quit
-let g:syntastic_check_on_wq = 0
-" use eslint to lint javascript files
-let g:syntastic_javascript_checkers = ['eslint']
-" use a shorter loc list for errors
-let g:syntastic_loc_list_height = 5
-" smoother redraw
-let g:syntastic_full_redraws = 1
-
-" custom symbols for error notifications
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '❗️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '❕'
-
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0
