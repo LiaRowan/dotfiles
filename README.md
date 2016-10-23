@@ -24,3 +24,17 @@ vim +PlugInstall +qall
 
 This will install all of vim's plugins and auto-quit.
 
+## Other Tools
+
+Tmux:
+
+```
+brew install tmux
+```
+
+Neovim:
+
+```
+brew install neovim/neovim/neovim
+```
+
