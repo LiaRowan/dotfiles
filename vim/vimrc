@@ -7,9 +7,15 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mileszs/ack.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'elzr/vim-json'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -21,7 +27,7 @@ call plug#end()
 
 " }}}
 " Color Scheme {{{
-syntax enable
+syntax on
 set background=dark
 set t_Co=256              " set terminal to 256 colors
 
@@ -157,6 +163,19 @@ let g:gundo_right=1
 nnoremap <leader>u :GundoToggle<CR>
 
 " }}}
+" IndentLine {{{
+let g:indentLine_char = '¦'
+let g:indentLine_color_term = 235
+
+" }}}
+" Javascript Libraries Syntax {{{
+let g:used_javascript_libs = 'underscore,react'
+
+" }}}
+" JSON {{{
+let g:vim_json_syntax_conceal = 0
+
+" }}}
 " Neomake {{{
 " lint files on open and save
 autocmd! BufWritePost,BufEnter * Neomake
@@ -177,8 +196,21 @@ let g:neomake_error_sign = {
   \ }
 
 " }}}
-" NerdTree {{{
-" open NerdTree with ctr-n
+" NERDCommenter {{{
+" allow commenting empy lines
+let g:NERDCommentEmptyLines = 1
+" comment entire selected line in visual mode
+let g:NERDCommentWholeLinesInVMode = 1
+" use nested comments by default
+let g:NERDDefaultNesting = 1
+" insert space after comment delimiter
+let g:NERDSpaceDelims = 1
+" remove whitespace from empty lines
+let g:NERDTrimTrailingWhitespace = 1
+
+" }}}
+" NERDTree {{{
+" open NERDTree with ctr-n
 nmap <silent><leader>t :NERDTreeTabsToggle<CR>
 
 " }}}
