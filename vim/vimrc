@@ -11,7 +11,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
-Plug 'Yggdroot/indentLine'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'jelera/vim-javascript-syntax'
@@ -161,11 +160,6 @@ let g:gundo_right=1
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
-
-" }}}
-" IndentLine {{{
-let g:indentLine_char = '¦'
-let g:indentLine_color_term = 235
 
 " }}}
 " Javascript Libraries Syntax {{{
