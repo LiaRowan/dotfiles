@@ -51,7 +51,6 @@ set cursorline            " highlight current line
 set showmatch             " highlight matching parenthesis
 set showcmd               " show command in bottom bar
 set wildmenu              " visual autocomplete for command menu
-set lazyredraw            " redraw only when needed
 
 set modelines=1           " allow a modeline at end of file
 
@@ -71,7 +70,7 @@ set incsearch             " show search matches as you type
 set hlsearch              " Highlight search matches
 
 " clear the search highlight
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>/ :nohlsearch<CR>
 
 " }}}
 " Auto Paste {{{
@@ -93,6 +92,8 @@ set hidden                " hide buffers instead of closing them
 set nobackup              " disable vim backup file
 set noswapfile            " disable vim swap file
 set nocompatible          " disable vi compatibility
+
+set mouse-=a              " disable visual mouse mode
 
 set history=1000          " remember more commands and search history
 set undolevels=1000       " we must go deeper
@@ -191,8 +192,6 @@ let g:neomake_error_sign = {
 
 " }}}
 " NERDCommenter {{{
-" allow commenting empy lines
-let g:NERDCommentEmptyLines = 1
 " comment entire selected line in visual mode
 let g:NERDCommentWholeLinesInVMode = 1
 " use nested comments by default
