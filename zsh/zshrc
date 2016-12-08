@@ -1,5 +1,7 @@
 # Export PATH
 export PATH=/usr/local/bin:$PATH
+export GOPATH="$HOME/projects/gocode"
+export PATH=$PATH:$GOPATH/bin
 
 # Source Prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -27,7 +29,7 @@ alias gd="git diff"
 alias ga="git add"
 alias gi="git commit"
 alias gh="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
-alias go="git checkout"
+alias ggo="git checkout"
 alias gb="git branch"
 alias gpom="git push origin master"
 alias gprom='git pull --rebase origin master'
