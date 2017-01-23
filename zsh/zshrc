@@ -1,5 +1,4 @@
 # Export PATH
-export PATH=/usr/local/bin:$PATH
 export GOPATH="$HOME/projects/gocode"
 export PATH=$PATH:$GOPATH/bin
 
