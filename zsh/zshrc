@@ -20,7 +20,7 @@ prompt paradox
 ### Aliases ###
 # Shortcuts
 alias proj='cd ~/projects'
-alias sbox='source ~/.ssh/sbox.sh'
+alias todo='vim ~/.dotfiles/.todos.md'
 # Git
 alias gc="git clone"
 alias gs="git status"
