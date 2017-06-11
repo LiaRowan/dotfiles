@@ -8,18 +8,20 @@ set -x PATH $PATH $GOPATH/bin
 if which nvim > /dev/null ^ /dev/null
   alias vim "nvim"
 end
+
 # Shortcuts
 alias proj 'cd ~/projects'
 alias todo 'vim ~/.dotfiles/.todos.md'
+
 # Git
-alias gc "git clone"
-alias gs "git status"
-alias gd "git diff"
-alias ga "git add"
-alias gi "git commit"
-alias gh "git log --pretty --graph --date short --oneline --color=always | less -r"
-alias ggo "git checkout"
-alias gb "git branch"
-alias gpom "git push origin master"
-alias gprom 'git pull --rebase origin master'
+abbr gc "git clone"
+abbr gs "git status"
+abbr gd "git diff"
+abbr ga "git add"
+abbr gi "git commit"
+abbr gh "git log --pretty --graph --date short --oneline --color=always | less -r"
+abbr ggo "git checkout"
+abbr gb "git branch"
+abbr gpom "git push origin master"
+abbr gprom 'git pull --rebase origin master'
 
