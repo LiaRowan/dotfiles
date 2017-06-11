@@ -6,7 +6,6 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc: zsh/zshrc
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vim: vim
     ~/.vimrc: vim/vimrc
@@ -16,11 +15,17 @@
     ~/.config/nvim/init.vim:
       force: true
       path: vim/vimrc
+    ~/.config/fish/config.fish:
+      force: true
+      path: fish/config.fish
 
 - shell:
   - git submodule update --init --recursive
-  - rm -rf ~/.zprezto
-  - zsh && git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-  - source zsh/zshrc
-  - chsh -s /bin/zsh
+  - brew install git
+  - brew install neovim/neovim/neovim
+  - brew install tmux
+  - brew install fish
+  - echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+  - chsh -s /usr/local/bin/fish
+  - vim +PlugInstall +qall
 
