@@ -15,9 +15,9 @@
     ~/.config/nvim/init.vim:
       force: true
       path: vim/vimrc
-    ~/.config/fish/config.fish:
+    ~/.config/fish:
       force: true
-      path: fish/config.fish
+      path: fish
 
 - shell:
   - git submodule update --init --recursive
