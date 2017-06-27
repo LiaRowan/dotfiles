@@ -12,7 +12,9 @@ end
 # Shortcuts
 alias proj 'cd ~/projects'
 alias todo 'vim ~/.dotfiles/.todos.md'
-abbr l 'ls -la'
+abbr proj 'cd ~/projects'
+abbr dotfiles 'cd ~/.dotfiles'
+abbr l 'ls -lah'
 
 # Git
 abbr gc "git clone"
