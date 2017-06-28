@@ -1,8 +1,3 @@
-# Export PATH
-set -x GOPATH "$HOME/projects/gocode"
-set -x PATH $PATH $GOPATH/bin
-
-
 ### Aliases ###
 # Use Nvim if Exists
 if which nvim > /dev/null ^ /dev/null

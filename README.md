@@ -12,29 +12,29 @@ cd ~/.dotfiles
 ./install
 ```
 
-This will symlink all files and promt you for your password in order to change your default shell to zsh. If you don't want your default shell changed, you can ctr+c at this time, and it won't affect the rest of the installation.
-
-Alternatively, you can go into `install.conf.yaml` and remove `- chsh -s /bin/zsh` from the `- shell:` dictionary.
-
-Finally, run:
+This will symlink all config files and install useful tools and plugins. Dotbot apparently has some issues with Ubuntu, so you
+will need to manually run the following commands:
 
 ```
-vim +PlugInstall +qall
+chsh -s /usr/bin/fish
+ln ~/.config/fish/fishd.Hostname ~/.config/fish/fishd.$HOSTNAME
 ```
 
-This will install all of vim's plugins and auto-quit.
+This will set fish as your default shell and symlink the fish preferences file to the proper location.
 
-## Other Tools
-
-Tmux:
+Finally, just open a new shell session to use fish as your default shell, or you can run
 
 ```
-brew install tmux
+fish
 ```
 
-Neovim:
+to temporarily switch to the fish shell.
 
-```
-brew install neovim/neovim/neovim
-```
+
+## Other Installed Tools
+
+- Git
+- Neovim
+- Tmux
+- Fish
 
