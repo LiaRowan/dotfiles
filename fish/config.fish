@@ -5,9 +5,7 @@ if which nvim > /dev/null ^ /dev/null
 end
 
 # Shortcuts
-alias proj 'cd ~/projects'
 alias todo 'vim ~/.dotfiles/.todos.md'
-abbr proj 'cd ~/projects'
 abbr dotfiles 'cd ~/.dotfiles'
 abbr l 'ls -lah'
 
