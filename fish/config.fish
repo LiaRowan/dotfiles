@@ -14,7 +14,8 @@ alias proj 'cd ~/projects'
 alias todo 'vim ~/.dotfiles/.todos.md'
 abbr proj 'cd ~/projects'
 abbr dotfiles 'cd ~/.dotfiles'
-abbr l 'ls -lah'
+abbr l 'ls -lh'
+abbr la 'ls -lah'
 abbr cl 'clear'
 
 # Git
