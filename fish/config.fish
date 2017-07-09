@@ -7,7 +7,8 @@ end
 # Shortcuts
 alias todo 'vim ~/.dotfiles/.todos.md'
 abbr dotfiles 'cd ~/.dotfiles'
-abbr l 'ls -lah'
+abbr l 'ls -lh'
+abbr la 'ls -lah'
 
 # Git
 abbr gc "git clone"
