@@ -1,20 +1,24 @@
 " Vim-Plug: Plugin Manager {{{
 call plug#begin('~/.vim/plugged')
 " color schemes
+Plug 'altercation/vim-colors-solarized'
 Plug 'crusoexia/vim-monokai'
 Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'mhartington/oceanic-next'
 " plugins
 Plug 'mileszs/ack.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'urso/haskell_syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'elzr/vim-json'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -26,15 +30,18 @@ call plug#end()
 
 " }}}
 " Color Scheme {{{
-syntax on
+syntax enable
+
 set background=dark
 set t_Co=256              " set terminal to 256 colors
 
-silent! colorscheme monokai
+silent! colorscheme OceanicNext
 
 " Available color schemes:
+"   - OceanicNext,        OceanicNextLight
+"   - hybrid_material,    hybrid_reverse
 "   - monokai
-"   - hybrid_material
+"   - solarized
 
 " }}}
 " Tabs {{{
