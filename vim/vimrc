@@ -59,6 +59,8 @@ set wildmenu              " visual autocomplete for command menu
 
 set modelines=1           " allow a modeline at end of file
 
+let &colorcolumn="81,101" " hightlight columns 81 and 101
+
 " }}}
 " Folding {{{
 set foldenable            " enable code block folding
