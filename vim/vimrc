@@ -13,7 +13,6 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'mileszs/ack.vim'
-Plug 'neomake/neomake'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
@@ -23,7 +22,7 @@ Plug 'sjl/gundo.vim'
 Plug 'urso/haskell_syntax.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 call plug#end()
 
 " :PlugInstall to install plugins
@@ -151,6 +150,25 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " }}}
+" Ale {{{
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_linters = { 'jsx': ['stylelint', 'eslint'] }
+let g:ale_linter_aliases = { 'jsx': 'css' }
+let g:ale_pattern_options = {
+\ '\.min\.css$': { 'ale_linters': [], 'ale_fixers': [] },
+\ '\.min\.js$': { 'ale_linters': [], 'ale_fixers': [] },
+\ '\.cjs\.js$': { 'ale_linters': [], 'ale_fixers': [] },
+\ '\.esm\.js$': { 'ale_linters': [], 'ale_fixers': [] },
+\}
+
+let g:ale_fixers = { 'javascript': ['eslint'], }
+let g:ale_fix_on_save = 1
+
+" }}}
 " BufferGator {{{
 " open to right side
 let g:buffergator_viewport_split_policy = 'R'
@@ -198,30 +216,6 @@ nnoremap <leader>u :GundoToggle<CR>
 " }}}
 " Javascript Libraries Syntax {{{
 let g:used_javascript_libs = 'underscore,react'
-
-" }}}
-" JSON {{{
-let g:vim_json_syntax_conceal = 0
-
-" }}}
-" Neomake {{{
-" lint files on open and save
-autocmd! BufWritePost,BufEnter * Neomake
-" open error window automatically if lint fails
-" this is currently broken (for me at least)
-" hopefully it will be resolved soon. I'll open
-" an issue on github if not
-" let g:neomake_open_list = 2
-
-" change default error symbols
-let g:neomake_warning_sign = {
-  \ 'text': '❌',
-  \ 'texthl': 'WarningMsg',
-  \ }
-let g:neomake_error_sign = {
-  \ 'text': '⚠️',
-  \ 'texthl': 'ErrorMsg',
-  \ }
 
 " }}}
 " NERDCommenter {{{
