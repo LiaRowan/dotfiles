@@ -6,21 +6,25 @@ Plug 'crusoexia/vim-monokai'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mhartington/oceanic-next'
 " plugins
-Plug 'mileszs/ack.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'sjl/gundo.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'elzr/vim-json'
-Plug 'neomake/neomake'
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'edkolev/tmuxline.vim'
+Plug 'elzr/vim-json'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'mileszs/ack.vim'
+Plug 'neomake/neomake'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'sjl/gundo.vim'
+Plug 'urso/haskell_syntax.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 " :PlugInstall to install plugins
@@ -112,9 +116,9 @@ let mapleader=","         " change the mapleader from \ to ,
 " make commands more accessible
 nnoremap ; :
 
-" quickly edit the vimrc / zshrc files
+" quickly edit the vimrc / config.fish files
 nmap <leader>ev :vsp $MYVIMRC<CR>
-nmap <leader>ez :vsp ~/.zshrc<CR>
+nmap <leader>ef :vsp ~/.config/fish/config.fish<CR>
 " quickly source the vimrc file
 nmap <leader>sv :source $MYVIMRC<CR>
 
@@ -143,9 +147,32 @@ set laststatus=2          " always show the status bar
 set noshowmode            " disable vim's native mode indicator
 
 " show airline for tabs too
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='base16_monokai'
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" }}}
+" BufferGator {{{
+" open to right side
+let g:buffergator_viewport_split_policy = 'R'
+
+" use my own keymappings
+let g:buffergator_suppress_keymaps = 1
+
+" open new buffer
+nmap <leader>T :enew<cr>
+
+" switch to prev buffer
+nmap <leader>h :BuffergatorMruCyclePrev<cr>
+
+" switch to next buffer
+nmap <leader>l :BuffergatorMruCycleNext<cr>
+
+" list open buffers
+nmap <leader>bl :BuffergatorOpen<cr>
+
+" close current buffer and switch to previous
+nmap <leader>bq :bp <BAR> bd #<cr>
 
 " }}}
 " CtrlP {{{
@@ -210,7 +237,7 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " }}}
 " NERDTree {{{
-" open NERDTree with ctr-n
+" open NERDTree with <leader>t
 nmap <silent><leader>t :NERDTreeTabsToggle<CR>
 
 " }}}
