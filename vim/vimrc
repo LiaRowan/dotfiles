@@ -6,6 +6,9 @@ Plug 'crusoexia/vim-monokai'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mhartington/oceanic-next'
 " plugins
+Plug 'Valloric/YouCompleteMe', {
+\ 'do': './install.py --clang-completer --go-completer --js-completer',
+\}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'edkolev/tmuxline.vim'
