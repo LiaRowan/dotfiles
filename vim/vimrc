@@ -154,6 +154,11 @@ let g:airline_powerline_fonts = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 
+highlight ALEError cterm=undercurl ctermfg=Red
+highlight ALEWarning cterm=undercurl ctermfg=Red
+highlight ALEStyleError cterm=undercurl ctermfg=Red
+highlight ALEStyleWarning cterm=undercurl ctermfg=Red
+
 let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = { 'jsx': ['stylelint', 'eslint'] }
