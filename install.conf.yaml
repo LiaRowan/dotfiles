@@ -25,7 +25,9 @@
   - brew install neovim/neovim/neovim
   - brew install tmux
   - brew install fish
+  - brew install python
+  - pip3 install --upgrade neovim
   - echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
   - chsh -s /usr/local/bin/fish
-  - vim +PlugInstall +qall
+  - vim +PlugClean +PlugInstall +qall
 
