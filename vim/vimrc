@@ -140,7 +140,7 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " shortcut for using Ack
-nnoremap <leader>a :Ack
+nnoremap <leader>a :Ack<space>
 
 " }}}
 " Airline {{{
