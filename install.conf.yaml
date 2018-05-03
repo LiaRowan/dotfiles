@@ -30,6 +30,9 @@
   - sudo apt-get install build-essential cmake -y
   - sudo apt-get install fish -y
   - sudo pip3 install --upgrade neovim
+  - >
+    sudo curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   - sudo vim +PlugClean +PlugInstall +qall
   - git config --global core.editor "vim"
 
