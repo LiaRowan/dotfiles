@@ -12,7 +12,8 @@ end
 # Shortcuts
 alias hub 'cd ~/projects'
 alias todo 'vim ~/.dotfiles/.todos.md'
-abbr proj 'cd ~/projects'
+alias nodenom 'find ./ -name "node_modules" -type d -prune -exec rm -rf \'{}\' +'
+abbr hub 'cd ~/path/to/hub/directory' # Change me
 abbr dotfiles 'cd ~/.dotfiles'
 abbr l 'ls -lh'
 abbr la 'ls -lah'
