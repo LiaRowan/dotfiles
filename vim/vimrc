@@ -9,6 +9,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'Valloric/YouCompleteMe', {
 \ 'do': './install.py --clang-completer --go-completer --js-completer',
 \}
+Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'edkolev/tmuxline.vim'
@@ -163,6 +164,7 @@ highlight ALEStyleError cterm=undercurl ctermfg=Red
 highlight ALEStyleWarning cterm=undercurl ctermfg=Red
 
 let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
 
 let g:ale_linters = { 'jsx': ['stylelint', 'eslint'] }
 let g:ale_linter_aliases = { 'jsx': 'css' }
@@ -208,7 +210,7 @@ let g:ctrlp_switch_buffer = 0
 " allow working directory change with CtrlP
 let g:ctrlp_working_path_mode = 0
 " use Ag for fast file searching
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_user_command = 'ag %s -l --path-to-ignore ".gitignore" --ignore-dir "node_modules" --ignore-dir ".git" --nocolor --hidden -g ""'
 
 " to ignore files / directories for searching,
 " define a .agignore file
