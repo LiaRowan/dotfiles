@@ -1,4 +1,4 @@
-# Jak Buttarazzi's Dotfiles
+# Jak Rowan's Dotfiles
 
 These are my personal dotfiles. Feel free to have a look and grab anything you like. I try to keep it pretty well commented.
 
