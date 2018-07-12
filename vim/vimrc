@@ -231,8 +231,8 @@ let g:used_javascript_libs = 'underscore,react'
 " NERDCommenter {{{
 " comment entire selected line in visual mode
 let g:NERDCommentWholeLinesInVMode = 1
-" use nested comments by default
-let g:NERDDefaultNesting = 1
+" align comment delimiters flush to the left
+let g:NERDDefaultAlign = 'left'
 " insert space after comment delimiter
 let g:NERDSpaceDelims = 1
 " remove whitespace from empty lines
