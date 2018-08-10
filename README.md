@@ -7,7 +7,8 @@ These are my personal dotfiles. Feel free to have a look and grab anything you l
 To install:
 
 ```
-git clone https://github.com/jakrazzi/dotfiles ~/.dotfiles
+sudo pacman -S git python
+git clone https://gitlab.irinet.online/Iri/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ./install
 ```
@@ -33,7 +34,6 @@ to temporarily switch to the fish shell.
 
 ## Other Installed Tools
 
-- Git
 - Neovim
 - Tmux
 - Fish
