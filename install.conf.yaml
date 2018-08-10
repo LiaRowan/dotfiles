@@ -21,18 +21,7 @@
 
 - shell:
   - git submodule update --init --recursive
-  - sudo apt-add-repository ppa:fish-shell/release-2
-  - sudo apt-add-repository ppa:neovim-ppa/stable
-  - sudo apt-get update -y
-  - sudo apt-get install git-all -y
-  - sudo apt-get install tmux -y
-  - sudo apt-get install neovim python-dev python-pip python3-dev python3-pip -y
-  - sudo apt-get install build-essential cmake -y
-  - sudo apt-get install fish -y
-  - sudo pip3 install --upgrade neovim
-  - >
-    sudo curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  - sudo vim +PlugClean +PlugInstall +qall
-  - git config --global core.editor "vim"
-
+  - sudo pacman --noconfirm -S vim neovim tmux fish python2-pip
+  - sudo pip2 install --upgrade neovim
+  - vim +PlugClean +PlugInstall +qall
+  - git config --global core.editor vim
