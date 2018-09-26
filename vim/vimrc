@@ -6,10 +6,8 @@ Plug 'crusoexia/vim-monokai'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mhartington/oceanic-next'
 " plugins
-Plug 'Valloric/YouCompleteMe', {
-\ 'do': './install.py --clang-completer --go-completer --js-completer',
-\}
 Plug 'airblade/vim-gitgutter'
+Plug 'bitc/vim-hdevtools'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'edkolev/tmuxline.vim'
@@ -22,8 +20,8 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sjl/gundo.vim'
-Plug 'urso/haskell_syntax.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
@@ -157,16 +155,21 @@ let g:airline_powerline_fonts = 1
 " Ale {{{
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
+let g:ale_sign_column_always = 1
 
 highlight ALEError cterm=undercurl ctermfg=Red
-highlight ALEWarning cterm=undercurl ctermfg=Red
+highlight ALEWarning cterm=undercurl ctermfg=DarkCyan
 highlight ALEStyleError cterm=undercurl ctermfg=Red
-highlight ALEStyleWarning cterm=undercurl ctermfg=Red
+highlight ALEStyleWarning cterm=undercurl ctermfg=DarkCyan
 
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 
-let g:ale_linters = { 'jsx': ['stylelint', 'eslint'] }
+let g:ale_linters = {
+\ 'jsx': ['stylelint', 'eslint'],
+\ 'go': ['gometalinter'],
+\ 'haskell': ['hlint', 'hdevtools'],
+\}
 let g:ale_linter_aliases = { 'jsx': 'css' }
 let g:ale_pattern_options = {
 \ '\.min\.css$': { 'ale_linters': [], 'ale_fixers': [] },
@@ -175,7 +178,11 @@ let g:ale_pattern_options = {
 \ '\.esm\.js$': { 'ale_linters': [], 'ale_fixers': [] },
 \}
 
-let g:ale_fixers = { 'javascript': ['eslint'], }
+let g:ale_fixers = {
+\ 'javascript': ['eslint'],
+\ 'go': ['gofmt'],
+\ 'haskell': ['brittany'],
+\}
 let g:ale_fix_on_save = 1
 
 " }}}
@@ -216,6 +223,12 @@ let g:ctrlp_user_command = 'ag %s -l --path-to-ignore ".gitignore" --ignore-dir 
 " define a .agignore file
 
 " }}}
+" Deoplete {{{
+let g:deoplete#enable_at_startup = 1
+
+" tab complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" }}}
 " Gundo {{{
 let g:gundo_preview_height=25
 let g:gundo_right=1
@@ -223,6 +236,9 @@ let g:gundo_right=1
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 
+" }}}
+" Haskell Vim {{{
+let g:haskell_indent_case_alternative = 1
 " }}}
 " Javascript Libraries Syntax {{{
 let g:used_javascript_libs = 'underscore,react'
@@ -235,7 +251,6 @@ let g:NERDCommentWholeLinesInVMode = 1
 let g:NERDDefaultAlign = 'left'
 " insert space after comment delimiter
 let g:NERDSpaceDelims = 1
-" remove whitespace from empty lines
 let g:NERDTrimTrailingWhitespace = 1
 
 " }}}
