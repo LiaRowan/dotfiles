@@ -21,7 +21,9 @@
 
 - shell:
   - git submodule update --init --recursive
-  - sudo pacman --noconfirm -S vim neovim tmux fish python2-pip
-  - sudo pip2 install --upgrade neovim
+  - sudo pacman --noconfirm -S vim tmux fish neovim python-neovim python2-neovim
+  - sudo pacman --noconfirm -S vim python-pip python2-pip
+  - sudo pip2 install --user --upgrade neovim
+  - sudo pip3 install --user --upgrade neovim
   - vim +PlugClean +PlugInstall +qall
   - git config --global core.editor vim
