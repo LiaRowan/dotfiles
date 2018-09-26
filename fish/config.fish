@@ -1,3 +1,7 @@
+### Path ###
+set -x -g PATH $PATH $HOME/.local/bin
+set -x -g PATH $PATH (stack path | grep compiler-bin | cut -d ' ' -f 2)
+
 ### Aliases ###
 # Use Nvim if Exists
 if which nvim > /dev/null ^ /dev/null

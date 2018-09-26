@@ -23,7 +23,10 @@
   - git submodule update --init --recursive
   - sudo pacman --noconfirm -S vim tmux fish neovim python-neovim python2-neovim
   - sudo pacman --noconfirm -S vim python-pip python2-pip
+  - sudo pacman --noconfirm -S ghc cabal-install stack make
   - sudo pip2 install --user --upgrade neovim
   - sudo pip3 install --user --upgrade neovim
+  - stack setup
+  - stack install brittany hlint hdevtools
   - vim +PlugClean +PlugInstall +qall
   - git config --global core.editor vim
