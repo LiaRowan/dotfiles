@@ -9,6 +9,7 @@
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vim: vim
     ~/.vimrc: vim/vimrc
+    ~/.xinitrc: X-11/xinitrc
     ~/.config/nvim:
       force: true
       path: vim
@@ -21,7 +22,8 @@
 
 - shell:
   - git submodule update --init --recursive
-  - sudo pacman --noconfirm -S vim tmux fish neovim python-neovim python2-neovim
+  - sudo pacman --noconfirm -S numlockx vim neovim tmux fish
+  - sudo pacman --noconfirm -S python-neovim python2-neovim
   - sudo pacman --noconfirm -S vim python-pip python2-pip
   - sudo pacman --noconfirm -S ghc cabal-install stack make
   - sudo pip2 install --user --upgrade neovim
