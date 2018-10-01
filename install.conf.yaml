@@ -10,15 +10,21 @@
     ~/.vim: vim
     ~/.vimrc: vim/vimrc
     ~/.xinitrc: X-11/xinitrc
+    ~/.config/fish:
+      force: true
+      path: fish
+    ~/.config/awesome:
+      force: true
+      path: awesome
+    ~/.config/termite:
+      force: true
+      path: termite
     ~/.config/nvim:
       force: true
       path: vim
     ~/.config/nvim/init.vim:
       force: true
       path: vim/vimrc
-    ~/.config/fish:
-      force: true
-      path: fish
 
 - shell:
   - git submodule update --init --recursive
