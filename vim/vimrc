@@ -8,6 +8,7 @@ Plug 'mhartington/oceanic-next'
 " plugins
 Plug 'airblade/vim-gitgutter'
 Plug 'bitc/vim-hdevtools'
+Plug 'cespare/vim-toml'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'edkolev/tmuxline.vim'
