@@ -1,3 +1,6 @@
 vim/init.vim
 vim/plugged/
 .todos.md
+
+!fish/fishd.Hostname
+fish/fishd.*
