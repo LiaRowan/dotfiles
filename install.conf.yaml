@@ -28,6 +28,7 @@
 
 - shell:
   - git submodule update --init --recursive
+  - mkdir -p ~/.local/bin
   - sudo pacman --noconfirm -S numlockx vim neovim tmux fish
   - sudo pacman --noconfirm -S python-neovim python2-neovim
   - sudo pacman --noconfirm -S vim python-pip python2-pip
@@ -35,6 +36,5 @@
   - sudo pip2 install --user --upgrade neovim
   - sudo pip3 install --user --upgrade neovim
   - stack setup
-  - stack install brittany hlint hdevtools
-  - vim +PlugClean +PlugInstall +qall
+  - vim +PlugClean +PlugInstall +UpdateRemotePlugins +qall
   - git config --global core.editor vim

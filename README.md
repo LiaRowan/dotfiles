@@ -32,9 +32,17 @@ fish
 to temporarily switch to the fish shell.
 
 
+_Notes_: If you get an error about `deoplete` when opening `vim`, then run `:UpdateRemotePlugins` inside the editor and restart.
+
+
 ## Other Installed Tools
 
 - Neovim
 - Tmux
 - Fish
+- Pip
+- Ghc
+- Cabal
+- Stack
+- Make
 
