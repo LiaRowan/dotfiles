@@ -29,6 +29,7 @@
 - shell:
   - git submodule update --init --recursive
   - mkdir -p ~/.local/bin
+  - sudo pacman --noconfirm -S ttf-hack steam-fonts noto-fonts
   - sudo pacman --noconfirm -S numlockx vim neovim tmux fish
   - sudo pacman --noconfirm -S python-neovim python2-neovim
   - sudo pacman --noconfirm -S vim python-pip python2-pip
