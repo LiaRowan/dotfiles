@@ -116,7 +116,11 @@ tray.buttons = awful.util.table.join(
 -- PA volume control
 --------------------------------------------------------------------------------
 local volume = {}
-volume.widget = redflat.widget.pulse(nil, { widget = redflat.gauge.audio.blue.new })
+volume.widget = redflat.widget.pulse({
+  autoupdate = true
+}, {
+  widget = redflat.gauge.audio.blue.new
+})
 
 -- activate player widget
 redflat.float.player:init({ name = env.player })
@@ -221,7 +225,7 @@ awful.screen.connect_for_each_screen(
 		env.wallpaper(s)
 
 		-- tags
-		awful.tag({ "Main", "Dev", "Net", "Misc" }, s, { al[4], al[5], al[6], al[5] })
+		awful.tag({ "Main", "Dev", "Net", "Misc" }, s, { al[5], al[5], al[6], al[5] })
 
 		-- layoutbox widget
 		layoutbox[s] = redflat.widget.layoutbox({ screen = s })
