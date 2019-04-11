@@ -11,7 +11,6 @@ if which nvim > /dev/null ^ /dev/null
 end
 
 # Shortcuts
-alias todo 'vim ~/.dotfiles/.todos.md'
 abbr hub 'cd ~/path/to/hub/directory' # Change me
 alias nodenom 'find ./ -name "node_modules" -type d -prune -exec rm -rf \'{}\' +'
 abbr dotfiles 'cd ~/.dotfiles'
