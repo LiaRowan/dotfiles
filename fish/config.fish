@@ -1,8 +1,10 @@
 ### Path ###
 set -x -g PATH $PATH $HOME/.local/bin
 set -x -g PATH $PATH (stack path | grep compiler-bin | cut -d ' ' -f 2)
+set -x -g PATH $PATH (yarn global bin)
+set -x -g PATH $PATH $HOME/.cargo/bin
 
-set -x -g EDITOR vim
+set -x -g EDITOR nvim
 
 ### Aliases ###
 # Use Nvim if Exists
@@ -12,6 +14,7 @@ end
 
 # Shortcuts
 abbr hub 'cd ~/path/to/hub/directory' # Change me
+abbr notes 'vim ~/vimwiki/index.wiki'
 alias nodenom 'find ./ -name "node_modules" -type d -prune -exec rm -rf \'{}\' +'
 abbr dotfiles 'cd ~/.dotfiles'
 abbr l 'ls -lh'
