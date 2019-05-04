@@ -137,7 +137,7 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 
 " }}}
 " Ack {{{
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'rg --no-heading --column'
 
 " shortcut for using Ack
 nnoremap <leader>a :Ack<space>
