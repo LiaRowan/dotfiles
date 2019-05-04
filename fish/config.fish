@@ -31,3 +31,9 @@ abbr gb "git branch"
 abbr gpom "git push origin master"
 abbr gprom 'git pull --rebase origin master'
 
+### Initialization ###
+# Start Window Manager
+#if [ ! $DISPLAY ]; and [ $XDG_VTNR -eq 1 ];
+#  exec startx
+#end
+
