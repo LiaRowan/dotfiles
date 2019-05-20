@@ -25,6 +25,7 @@ Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sjl/gundo.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 call plug#end()
 
@@ -104,6 +105,9 @@ set hidden                " hide buffers instead of closing them
 set nobackup              " disable vim backup file
 set noswapfile            " disable vim swap file
 set nocompatible          " disable vi compatibility
+
+filetype plugin on
+syntax on
 
 set mouse-=a              " disable visual mouse mode
 
@@ -259,5 +263,18 @@ let g:NERDTrimTrailingWhitespace = 1
 " open NERDTree with <leader>t
 nmap <silent><leader>t :NERDTreeTabsToggle<CR>
 
+" }}}
+" VimWiki {{{
+highlight VimwikiHeader1 ctermfg=10
+highlight VimwikiHeader2 ctermfg=9
+highlight VimwikiHeader3 ctermfg=3
+
+let g:vimwiki_auto_chdir = 1
+
+let g:vimwiki_list = [{
+      \'path': '~/Documents/Notebook/',
+      \'diary_header': "Logs",
+      \'auto_diary_index': 1,
+\}]
 " }}}
 " vim:foldmethod=marker:foldlevel=0
