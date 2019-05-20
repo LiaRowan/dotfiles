@@ -14,7 +14,7 @@ end
 
 # Shortcuts
 abbr hub 'cd ~/path/to/hub/directory' # Change me
-abbr notes 'vim ~/vimwiki/index.wiki'
+alias journal 'vim ~/Documents/Notebook/index.wiki'
 alias nodenom 'find ./ -name "node_modules" -type d -prune -exec rm -rf \'{}\' +'
 abbr dotfiles 'cd ~/.dotfiles'
 abbr l 'ls -lh'
