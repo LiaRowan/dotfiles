@@ -121,6 +121,9 @@ let mapleader=","         " change the mapleader from \ to ,
 " make commands more accessible
 nnoremap ; :
 
+nnoremap J <C-e>
+nnoremap K <C-y>
+
 " quickly edit the vimrc / config.fish files
 nmap <leader>ev :vsp $MYVIMRC<CR>
 nmap <leader>ef :vsp ~/.config/fish/config.fish<CR>
