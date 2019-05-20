@@ -1,7 +1,7 @@
 ### Path ###
 set -x -g PATH $PATH $HOME/.local/bin
 set -x -g PATH $PATH (stack path | grep compiler-bin | cut -d ' ' -f 2)
-set -x -g PATH $PATH (yarn global bin)
+set -x -g PATH $PATH (yarn global bin --offline)
 set -x -g PATH $PATH $HOME/.cargo/bin
 
 set -x -g EDITOR nvim
