@@ -34,9 +34,19 @@ abbr gb "git branch"
 abbr gpom "git push origin master"
 abbr gprom 'git pull --rebase origin master'
 
+
 ### Initialization ###
-# Start Window Manager
-#if [ ! $DISPLAY ]; and [ $XDG_VTNR -eq 1 ];
-#  exec startx
-#end
+if [ ! $DISPLAY ]; and [ $XDG_VTNR -eq 1 ];
+  # Start ssh-agent
+  set ENV_VARS ( \
+      ssh-agent -s | \
+      grep SSH | \
+      awk '-F;' '{ print $1 }' | \
+      awk -F= '{ print "set -x -g " $1 " " $2 ";" }' \
+  )
+  eval $ENV_VARS
+
+  # Start Window Manager
+  exec startx
+end
 
