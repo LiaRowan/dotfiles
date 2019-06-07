@@ -674,11 +674,11 @@ function hotkeys:init(args)
 			{ description = "Go previos tag", group = "Tag navigation" }
 		},
 		{
-			{ env.mod }, "Right", awful.tag.viewnext,
+			{ env.mod }, "]", awful.tag.viewnext,
 			{ description = "View next tag", group = "Tag navigation" }
 		},
 		{
-			{ env.mod }, "Left", awful.tag.viewprev,
+			{ env.mod }, "[", awful.tag.viewprev,
 			{ description = "View previous tag", group = "Tag navigation" }
 		},
 
