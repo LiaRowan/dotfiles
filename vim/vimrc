@@ -103,6 +103,7 @@ endfunction
 " Functionality {{{
 set hidden                " hide buffers instead of closing them
 set nobackup              " disable vim backup file
+set backupcopy=yes        " keeps watch commands working
 set noswapfile            " disable vim swap file
 set nocompatible          " disable vi compatibility
 
