@@ -37,6 +37,11 @@ abbr gprom 'git pull --rebase origin master'
 
 ### Initialization ###
 if [ ! $DISPLAY ]; and [ $XDG_VTNR -eq 1 ];
+  # Add language support
+  set -x -g GTK_IM_MODULE ibus
+  set -x -g XMODIFIERS @im=ibus
+  set -x -g QT_IM_MODULE ibus
+
   # Start ssh-agent
   set ENV_VARS ( \
       ssh-agent -s | \

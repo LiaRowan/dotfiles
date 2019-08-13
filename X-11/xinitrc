@@ -41,8 +41,6 @@ xset +dpms
 setxkbmap -option caps:escape
 numlockx on
 
-xrdb -merge ~/.Xresources
-
 # Start Awesome WM
 exec awesome
 
