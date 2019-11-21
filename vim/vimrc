@@ -19,6 +19,7 @@ Plug 'mileszs/ack.vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -26,6 +27,7 @@ Plug 'sjl/gundo.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
+Plug 'wakatime/vim-wakatime'
 Plug 'w0rp/ale'
 call plug#end()
 
@@ -183,6 +185,7 @@ let g:ale_fixers = {
 \ 'javascript': ['eslint'],
 \ 'go': ['gofmt'],
 \ 'haskell': ['brittany'],
+\ 'rust': ['rustfmt'],
 \}
 let g:ale_fix_on_save = 1
 

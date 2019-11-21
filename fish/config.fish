@@ -1,8 +1,10 @@
 ### Path ###
+set -x -g GOPATH "$HOME/Workspace/gocode"
+set -x -g PATH $PATH $GOPATH/bin /usr/local/go/bin
 set -x -g PATH $PATH $HOME/.local/bin
-set -x -g PATH $PATH (stack path | grep compiler-bin | cut -d ' ' -f 2)
-set -x -g PATH $PATH (yarn global bin --offline)
 set -x -g PATH $PATH $HOME/.cargo/bin
+# set -x -g PATH $PATH (stack path | grep compiler-bin | cut -d ' ' -f 2)
+set -x -g PATH $PATH (yarn global bin --offline)
 
 set -x -g EDITOR nvim
 
