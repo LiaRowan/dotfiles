@@ -24,7 +24,7 @@
   - sudo pacman --noconfirm -S numlockx vim neovim tmux fish
   - sudo pacman --noconfirm -S python-neovim python2-neovim
   - sudo pacman --noconfirm -S vim python-pip python2-pip
-  - sudo pacman --noconfirm -S ghc cabal-install stack make
+  # - sudo pacman --noconfirm -S ghc cabal-install stack make
   - sudo pacman --noconfirm -S rustup
   - sudo pip2 install --user --upgrade neovim
   - sudo pip3 install --user --upgrade neovim

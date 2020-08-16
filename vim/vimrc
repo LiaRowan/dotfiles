@@ -1,13 +1,20 @@
 " Vim-Plug: Plugin Manager {{{
+" Download Vim-Plug if not already installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 " color schemes
-Plug 'altercation/vim-colors-solarized'
-Plug 'crusoexia/vim-monokai'
-Plug 'kristijanhusak/vim-hybrid-material'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'crusoexia/vim-monokai'
+" Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mhartington/oceanic-next'
 " plugins
 Plug 'airblade/vim-gitgutter'
-Plug 'bitc/vim-hdevtools'
+" Plug 'bitc/vim-hdevtools'
 Plug 'cespare/vim-toml'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -20,14 +27,13 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'racer-rust/vim-racer'
+Plug 'ron-rs/ron.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sjl/gundo.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
-Plug 'wakatime/vim-wakatime'
 Plug 'w0rp/ale'
 call plug#end()
 
@@ -172,6 +178,7 @@ let g:ale_linters = {
 \ 'jsx': ['stylelint', 'eslint'],
 \ 'go': ['gometalinter'],
 \ 'haskell': ['hlint', 'hdevtools'],
+\ 'rust': ['cargo', 'rls'],
 \}
 let g:ale_linter_aliases = { 'jsx': 'css' }
 let g:ale_pattern_options = {
@@ -229,6 +236,9 @@ let g:ctrlp_user_command = 'ag %s -l --path-to-ignore ".gitignore" --ignore-dir 
 " }}}
 " Deoplete {{{
 let g:deoplete#enable_at_startup = 1
+
+" Automatically close the scratch pane
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " tab complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
