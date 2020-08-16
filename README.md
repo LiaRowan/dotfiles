@@ -47,8 +47,11 @@ inside the editor and restart.
 - Tmux
 - Fish
 - Pip
-- GHC
-- Cabal
-- Stack
-- Make
 
+
+## Recommended Tooling
+
+Rust:
+  - `rustup component add rustfmt`
+  - `rustup component add rls rust-analysis rust-src`
+  - `cargo install cargo-watch cargo-edit`
