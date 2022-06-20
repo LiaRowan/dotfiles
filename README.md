@@ -1,6 +1,7 @@
 # Jak Rowan's Dotfiles
 
-These are my personal dotfiles. Feel free to have a look and grab anything you like. I try to keep it pretty well commented.
+These are my personal dotfiles. Feel free to have a look and grab anything you like. I try to keep
+it pretty well commented.
 
 ## Installation
 
@@ -12,9 +13,12 @@ cd ~/.dotfiles
 ./install
 ```
 
-This will symlink all files and promt you for your password in order to change your default shell to zsh. If you don't want your default shell changed, you can ctr+c at this time, and it won't affect the rest of the installation.
+This will symlink all files and promt you for your password in order to change your default shell to
+fish. If you don't want your default shell changed, you can ctr+c at this time, and it won't affect
+the rest of the installation.
 
-Alternatively, you can go into `install.conf.yaml` and remove `- chsh -s /bin/zsh` from the `- shell:` dictionary.
+Alternatively, you can go into `install.conf.yaml` and remove `- chsh -s /opt/homebrew/bin/fish` from the `-
+shell:` dictionary.
 
 Finally, run:
 
