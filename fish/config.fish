@@ -1,25 +1,22 @@
-# Export PATH
-set -x GOPATH "$HOME/projects/gocode"
-set -x PATH $PATH $GOPATH/bin
-
+### PATH ###
+set -x PATH $PATH $HOME/.local/bin
+set -x PATH $PATH $HOME/.cargo/bin
 
 ### Aliases ###
 # Use Nvim if Exists
-if which nvim > /dev/null ^ /dev/null
+if which nvim &> /dev/null
   alias vim 'nvim'
 end
 
-# Shortcuts
-alias hub 'cd ~/projects'
-alias todo 'vim ~/.dotfiles/.todos.md'
+### Shortcuts ###
+alias journal 'vim ~/Documents/Notebook/index.wiki'
 alias nodenom 'find ./ -name "node_modules" -type d -prune -exec rm -rf \'{}\' +'
-abbr hub 'cd ~/path/to/hub/directory' # Change me
 abbr dotfiles 'cd ~/.dotfiles'
 abbr l 'ls -lh'
 abbr la 'ls -lah'
 abbr cl 'clear'
 
-# Git
+### Git ###
 abbr gc 'git clone'
 abbr gs 'git status'
 abbr gd 'git diff'
@@ -32,7 +29,7 @@ abbr gb 'git branch'
 abbr gpom 'git push origin master'
 abbr gprom 'git pull --rebase origin master'
 
-# Node
+### Node ###
 abbr ni 'npm install'
 abbr ns 'npm start'
 abbr nt 'npm test'
