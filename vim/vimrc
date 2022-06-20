@@ -64,6 +64,7 @@ set showcmd               " show command in bottom bar
 set wildmenu              " visual autocomplete for command menu
 
 set modelines=1           " allow a modeline at end of file
+set encoding=utf-8
 
 let &colorcolumn="81,101" " hightlight columns 81 and 101
 
@@ -107,7 +108,7 @@ set backupcopy=yes        " keeps watch commands working
 set noswapfile            " disable vim swap file
 set nocompatible          " disable vi compatibility
 
-filetype plugin
+filetype plugin on
 syntax on
 
 set mouse-=a              " disable visual mouse mode
@@ -174,10 +175,9 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 
 let g:ale_linters = {
-\ 'jsx': ['stylelint', 'eslint'],
-\ 'go': ['gometalinter'],
-\ 'haskell': ['hlint', 'hdevtools'],
 \ 'rust': ['cargo', 'rls'],
+\ 'javascript': ['eslint'],
+\ 'jsx': ['eslint'],
 \}
 let g:ale_linter_aliases = { 'jsx': 'css' }
 let g:ale_pattern_options = {
@@ -187,8 +187,14 @@ let g:ale_pattern_options = {
 \ '\.esm\.js$': { 'ale_linters': [], 'ale_fixers': [] },
 \}
 
+let g:ale_rust_rls_config = {
+\  'rust': {
+\    'clippy_preference': 'on'
+\  }
+\}
+
 let g:ale_fixers = {
-\ 'javascript': ['eslint'],
+\ 'javascript': ['prettier', 'eslint'],
 \ 'go': ['gofmt'],
 \ 'haskell': ['brittany'],
 \ 'rust': ['rustfmt'],
@@ -269,6 +275,7 @@ let g:NERDTrimTrailingWhitespace = 1
 " }}}
 " NERDTree {{{
 " open NERDTree with <leader>t
+let g:NERDTreeIgnore = ['^node_modules$', '^target$']
 nmap <silent><leader>t :NERDTreeTabsToggle<CR>
 
 " }}}
