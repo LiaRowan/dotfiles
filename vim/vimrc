@@ -7,7 +7,6 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mhartington/oceanic-next'
 " plugins
 Plug 'airblade/vim-gitgutter'
-Plug 'bitc/vim-hdevtools'
 Plug 'cespare/vim-toml'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -19,10 +18,11 @@ Plug 'mileszs/ack.vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'racer-rust/vim-racer'
+Plug 'ron-rs/ron.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sjl/gundo.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
@@ -107,10 +107,15 @@ set backupcopy=yes        " keeps watch commands working
 set noswapfile            " disable vim swap file
 set nocompatible          " disable vi compatibility
 
+filetype plugin
+syntax on
+
 set mouse-=a              " disable visual mouse mode
 
 set history=1000          " remember more commands and search history
 set undolevels=1000       " we must go deeper
+
+set tw=100                " set auto-textwidth to 100
 
 let g:netrw_dirhistmax=0  " disable netrw history file
 
@@ -121,6 +126,12 @@ nnoremap ; :
 
 nnoremap J <C-e>
 nnoremap K <C-y>
+
+" make split navigation easier
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " quickly edit the vimrc / config.fish files
 nmap <leader>ev :vsp $MYVIMRC<CR>
@@ -133,7 +144,7 @@ cmap w!! w !sudo tee % >/dev/null
 
 " }}}
 " Ack {{{
-let g:ackprg = 'rg --column'
+let g:ackprg = 'rg --no-heading --column'
 
 " shortcut for using Ack
 nnoremap <leader>a :Ack<space>
@@ -225,6 +236,9 @@ let g:ctrlp_user_command = 'ag %s -l --path-to-ignore ".gitignore" --ignore-dir 
 " Deoplete {{{
 let g:deoplete#enable_at_startup = 1
 
+" Automatically close the scratch pane
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
 " tab complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " }}}
@@ -258,15 +272,36 @@ let g:NERDTrimTrailingWhitespace = 1
 nmap <silent><leader>t :NERDTreeTabsToggle<CR>
 
 " }}}
-" {{{ VimWiki
+" Racer {{{
+" Hidden mode for buffers
+set hidden
+
+" Show complete function definition (Experimental)
+let g:racer_experimental_completer = 1
+
+" Insert parenthesis in the completion
+let g:racer_insert_paren = 1
+
+" Mappings to open definiteion in buffer, pane, tab, or doc
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+    autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
+augroup END
+" }}}
+" VimWiki {{{
 highlight VimwikiHeader1 ctermfg=10
-highlight VimwikiHeader1 ctermfg=9
-highlight VimwikiHeader1 ctermfg=3
+highlight VimwikiHeader2 ctermfg=9
+highlight VimwikiHeader3 ctermfg=3
 
 let g:vimwiki_auto_chdir = 1
 let g:vimwiki_list = [{
       \'path': '/path/to/wiki/',
-      \'diary_header': "Journal",
+      \'diary_header': "Logs",
       \'auto_diary_index': 1,
 \}]
 " }}}
