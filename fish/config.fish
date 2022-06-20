@@ -3,19 +3,17 @@ set -x -g GOPATH "$HOME/Workspace/gocode"
 set -x -g PATH $PATH $GOPATH/bin /usr/local/go/bin
 set -x -g PATH $PATH $HOME/.local/bin
 set -x -g PATH $PATH $HOME/.cargo/bin
-# set -x -g PATH $PATH (stack path | grep compiler-bin | cut -d ' ' -f 2)
 set -x -g PATH $PATH (yarn global bin --offline)
 
 set -x -g EDITOR nvim
 
 ### Aliases ###
 # Use Nvim if Exists
-if which nvim > /dev/null ^ /dev/null
+if which nvim &> /dev/null
   alias vim "nvim"
 end
 
 # Shortcuts
-abbr hub 'cd ~/path/to/hub/directory' # Change me
 alias journal 'vim ~/Documents/Notebook/index.wiki'
 alias nodenom 'find ./ -name "node_modules" -type d -prune -exec rm -rf \'{}\' +'
 abbr dotfiles 'cd ~/.dotfiles'
