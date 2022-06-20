@@ -134,6 +134,12 @@ nnoremap ; :
 nnoremap J <C-e>
 nnoremap K <C-y>
 
+" make split navigaion easier
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " quickly edit the vimrc / config.fish files
 nmap <leader>ev :vsp $MYVIMRC<CR>
 nmap <leader>ef :vsp ~/.config/fish/config.fish<CR>
@@ -272,6 +278,27 @@ let g:NERDTrimTrailingWhitespace = 1
 " open NERDTree with <leader>t
 nmap <silent><leader>t :NERDTreeTabsToggle<CR>
 
+" }}}
+" Racer {{{
+" Hidden mode for buffers
+set hidden
+
+" Show complete function definition (Experimental)
+let g:racer_experimental_completer = 1
+
+" Insert parenthesis in the completion
+let g:racer_insert_paren = 1
+
+" Mappings to open definition in buffer, pane, tab, or doc
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+    autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
+augroup END
 " }}}
 " VimWiki {{{
 highlight VimwikiHeader1 ctermfg=10
