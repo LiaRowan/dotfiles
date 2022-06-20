@@ -8,7 +8,7 @@ it pretty well commented.
 To install:
 
 ```
-git clone https://github.com/jakrazzi/dotfiles ~/.dotfiles
+git clone https://github.com/LeoRowan/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ./install
 ```
