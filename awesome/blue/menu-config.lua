@@ -78,8 +78,8 @@ function menu:init(args)
 			{ "Places",        placesmenu,  micon("folder_home"), key = "c" },
 			separator,
 			{ "Firefox", "firefox", micon("firefox") },
-			{ "Nemo",    "nemo",    micon("folder") },
-			{ "Emacs",   "emacs",   micon("emacs") },
+			{ "Discord", "discord", micon("discord") },
+
 			separator,
 			{ "Exit",     exitmenu,       micon("exit") },
 			{ "Shutdown", "shutdown now", micon("system-shutdown") }
