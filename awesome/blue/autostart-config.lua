@@ -29,8 +29,17 @@ function autostart.run()
 	awful.spawn.with_shell("bash ~/scripts/env/kbdd-setup.sh")
 
 	-- apps
-	awful.spawn.with_shell("clipflap")
-	awful.spawn.with_shell("transmission-gtk -m")
+  awful.spawn("discord", {
+    tag = 'Max',
+    fullscreen = false,
+  })
+  awful.spawn("telegram-desktop", {
+    tag = 'Max',
+    fullscreen = false,
+  })
+	awful.spawn.with_shell("flameshot")
+	awful.spawn.with_shell("nextcloud")
+	awful.spawn.with_shell("ibus-daemon")
 end
 
 -- Read and commads from file and spawn them
