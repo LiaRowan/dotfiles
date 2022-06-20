@@ -33,7 +33,7 @@ function desktop:init(args)
 	local netspeed = { geometry = wgeometry(grid, places.netspeed, workarea) }
 
 	netspeed.args = {
-		interface    = "wlp60s0",
+		interface    = "enp3s0",
 		maxspeed     = { up = 6*1024^2, down = 6*1024^2 },
 		crit         = { up = 6*1024^2, down = 6*1024^2 },
 		timeout      = 2,
@@ -47,7 +47,7 @@ function desktop:init(args)
 	local ssdspeed = { geometry = wgeometry(grid, places.ssdspeed, workarea) }
 
 	ssdspeed.args = {
-		interface = "sda",
+		interface = "sdb",
 		meter_function = system.disk_speed,
 		timeout   = 2,
 		label     = "SOLID DRIVE"
@@ -63,7 +63,7 @@ function desktop:init(args)
 	local cpumem = { geometry = wgeometry(grid, places.cpumem, workarea) }
 
 	cpumem.args = {
-		corners = { num = 8, maxm = 100, crit = 90 },
+		corners = { num = 16, maxm = 100, crit = 90 },
 		lines   = { { maxm = 100, crit = 80 }, { maxm = 100, crit = 80 } },
 		meter   = { args = cpu_storage },
 		timeout = 2
@@ -95,7 +95,7 @@ function desktop:init(args)
 	thermal.args = {
 		sensors = {
 			{ meter_function = system.thermal.sensors, args = "'Package id 0'", maxm = 100, crit = 75 },
-			{ meter_function = system.thermal.hddtemp, args = { disk = "/dev/sda" }, maxm = 60, crit = 45 },
+			{ meter_function = system.thermal.hddtemp, args = { disk = "/dev/sdb" }, maxm = 60, crit = 45 },
 			{ meter_function = system.thermal.nvoptimus, maxm = 105, crit = 80 }
 		},
 		names   = { "cpu", "ssd", "gpu" },
