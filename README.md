@@ -1,4 +1,4 @@
-# Jak Rowan's Dotfiles
+# Leo Rowan's Dotfiles
 
 These are my personal dotfiles. Feel free to have a look and grab anything you like. I try to keep
 it pretty well commented.
@@ -12,13 +12,13 @@ To install:
 
 ```
 sudo pacman -S git python
-git clone https://gitlab.irinet.online/Iri/dotfiles ~/.dotfiles
+git clone https://github.com/LeoRowan/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ./install
 ```
 
-This will symlink all config files and install useful tools and plugins. Dotbot apparently has some
-issues with Ubuntu, so you will need to manually run the following commands:
+This will symlink all config files and install useful tools and plugins. Then run the following
+commands:
 
 ```
 chsh -s /usr/bin/fish
