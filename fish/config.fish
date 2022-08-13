@@ -1,25 +1,25 @@
 ### Path ###
-set -x -g GOPATH "$HOME/Workspace/gocode"
-set -x -g PATH $PATH $GOPATH/bin /usr/local/go/bin
+set -x -g PATH $PATH /usr/local/share
 set -x -g PATH $PATH $HOME/.local/bin
 set -x -g PATH $PATH $HOME/.cargo/bin
-set -x -g PATH $PATH (yarn global bin --offline)
 
+### Environment ###
+set -x -g SHELL (which fish)
 set -x -g EDITOR nvim
+set -x -g TERM xterm-256color
 
 ### Aliases ###
 # Use Nvim if Exists
-if which nvim &> /dev/null
+if which nvim > /dev/null 2>&1
   alias vim "nvim"
 end
 
 # Shortcuts
-alias journal 'vim ~/Documents/Notebook/index.wiki'
 alias nodenom 'find ./ -name "node_modules" -type d -prune -exec rm -rf \'{}\' +'
 abbr dotfiles 'cd ~/.dotfiles'
 abbr l 'ls -lh'
 abbr la 'ls -lah'
-abbr cl 'clear'
+abbr ta 'tmux attach'
 
 # Git
 abbr gc "git clone"
