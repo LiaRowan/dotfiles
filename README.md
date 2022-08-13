@@ -36,11 +36,6 @@ fish
 
 to temporarily switch to the fish shell.
 
-
-_Notes_: If you get an error about `deoplete` when opening `vim`, then run `:UpdateRemotePlugins`
-inside the editor and restart.
-
-
 ## Other Installed Tools
 
 - Neovim
@@ -48,10 +43,9 @@ inside the editor and restart.
 - Fish
 - Pip
 
-
 ## Recommended Tooling
 
 Rust:
   - `rustup component add rustfmt`
-  - `rustup component add rls rust-analysis rust-src`
+  - `rustup component add rust-analysis rust-src`
   - `cargo install cargo-watch cargo-edit`
