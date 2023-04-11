@@ -24,11 +24,13 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'mileszs/ack.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovimhaskell/haskell-vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'racer-rust/vim-racer'
 Plug 'ron-rs/ron.vim'
+Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
@@ -37,16 +39,20 @@ Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 
 " New / Trialing
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/tagbar'
-Plug 'rust-lang/rust.vim'
 Plug 'universal-ctags/ctags'
 
 
 call plug#end()
 
-" :PlugInstall to install plugins
-" :PlugUpdate to update plugins
+" Install plugins:
+" :PlugInstall
+"
+" Update plugins:
+" :PlugUpdate
+"
+" Install rust-analyzer for CoC
+" ::CocInstall coc-rust-analyzer
 
 " }}}
 " Color Scheme {{{
@@ -254,12 +260,19 @@ else
   set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
+" Use tab for custom completion window
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+" remap for complete to use tab and <cr>
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#refresh()
+
+hi CocSearch ctermfg=12 guifg=#18A3FF
+hi CocMenuSel ctermbg=109 guibg=#13354A
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -272,11 +285,6 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -296,7 +304,7 @@ function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    call feedkeys('K', 'in')
+    call feedkeys('I', 'in')
   endif
 endfunction
 
@@ -402,16 +410,6 @@ let g:ctrlp_user_command = 'ag %s -l --path-to-ignore ".gitignore" --ignore-dir 
 
 " to ignore files / directories for searching,
 " define a .agignore file
-
-" }}}
-" Deoplete {{{
-" }}}
-" Gundo {{{
-let g:gundo_preview_height=25
-let g:gundo_right=1
-
-" toggle gundo
-nnoremap <leader>u :GundoToggle<CR>
 
 " }}}
 " Haskell Vim {{{
