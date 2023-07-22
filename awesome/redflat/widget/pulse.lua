@@ -53,18 +53,19 @@ local change_volume_default_args = {
 -- Change volume level
 -----------------------------------------------------------------------------------------------------------------------
 function pulse:change_volume(args)
+  self:update_sink()
 
 	-- initialize vars
 	local args = redutil.table.merge(change_volume_default_args, args or {})
 	local diff = args.down and -args.step or args.step
 
 	-- get current volume
-	local v = redutil.read.output("pacmd dump |grep set-sink-volume | grep " .. self.def_sink )
-	local parsed = string.match(v, "0x%x+")
+ local v = redutil.read.output("pactl get-sink-volume " .. self.def_sink)
+	local parsed = string.match(v, "%s(%d+)%s")
 
 	-- catch possible problems with pacmd output
 	if not parsed then
-		naughty.notify({ title = "Warning!", text = "PA widget can't parse pacmd output" })
+		naughty.notify({ title = "Warning!", text = "Audio widget can't parse pactl output" })
 		return
 	end
 
@@ -88,7 +89,7 @@ function pulse:change_volume(args)
 	end
 
 	-- set new volume
-	awful.spawn("pacmd set-sink-volume " .. self.def_sink .. " " .. new_volume)
+	awful.spawn("pactl set-sink-volume " .. self.def_sink .. " " .. new_volume)
 	-- update volume indicators
 	self:update_volume()
 end
@@ -96,9 +97,11 @@ end
 -- Set mute
 -----------------------------------------------------------------------------------------------------------------------
 function pulse:mute()
-	local mute = redutil.read.output("pacmd dump | grep set-sink-mute | grep " .. self.def_sink)
+  self:update_sink()
 
-	if string.find(mute, "no", -4) then
+	local mute = redutil.read.output("pactl get-sink-mute " .. self.def_sink)
+
+	if string.find(mute, "no") then
 		awful.spawn("pacmd set-sink-mute " .. self.def_sink .. " yes")
 	else
 		awful.spawn("pacmd set-sink-mute " .. self.def_sink .. " no")
@@ -109,21 +112,22 @@ end
 -- Update volume level info
 -----------------------------------------------------------------------------------------------------------------------
 function pulse:update_volume()
+  self:update_sink()
 
 	-- initialize vars
 	local volmax = 65536
 	local volume = 0
 
 	-- get current volume and mute state
-	local v = redutil.read.output("pacmd dump | grep set-sink-volume | grep " .. self.def_sink)
-	local m = redutil.read.output("pacmd dump | grep set-sink-mute | grep " .. self.def_sink)
+  local v = redutil.read.output("pactl get-sink-volume " .. self.def_sink)
+	local m = redutil.read.output("pactl get-sink-mute " .. self.def_sink)
 
 	if v then
-		local pv = string.match(v, "0x%x+")
+    local pv = string.match(v, "%s(%d+)%s")
 		if pv then volume = math.floor(tonumber(pv) * 100 / volmax) end
 	end
 
-	local mute = not (m and string.find(m, "no", -4))
+	local mute = not (m and string.find(m, "no"))
 
 	-- update tooltip
 	self.tooltip:set_text(volume .. "%")
@@ -138,7 +142,7 @@ end
 -- Update default pulse sink
 -----------------------------------------------------------------------------------------------------------------------
 function pulse:update_sink()
-	self.def_sink = redutil.read.output("pacmd dump|perl -ane 'print $F[1] if /set-default-sink/'")
+	self.def_sink = redutil.read.output("pactl info | grep 'Default Sink' | awk '{ print $3 }'")
 end
 
 -- Create a new pulse widget

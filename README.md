@@ -11,7 +11,7 @@ systems, currently `macOS` and `ubuntu`.
 To install:
 
 ```
-sudo pacman -S git python
+sudo pacman -S git
 git clone https://github.com/LeoRowan/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ./install

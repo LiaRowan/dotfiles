@@ -1,14 +1,47 @@
-#!/usr/bin/env bash
+#!/bin/bash
+WORKING_DIR=$(pwd)
 
-set -e
+echo "Ensuring directories exist"
+mkdir -p	$HOME/.config
+mkdir -p	$HOME/.local/bin
 
-CONFIG="install.conf.yaml"
-DOTBOT_DIR="dotbot"
+echo "Symlinking config files"
+ln -s -f  $WORKING_DIR/tmux/tmux.conf  $HOME/.tmux.conf
+ln -s -f  $WORKING_DIR/vim             $HOME/.vim
+ln -s -f  $WORKING_DIR/vim/vimrc       $HOME/.vimrc
+ln -s -f  $WORKING_DIR/X-11/xinitrc    $HOME/.xinitrc
+ln -s -f  $WORKING_DIR/X-11/Xmodmap    $HOME/.Xmodmap
 
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ln -s -f	$WORKING_DIR/awesome         $HOME/.config/awesome
+ln -s -f 	$WORKING_DIR/fish            $HOME/.config/fish
+ln -s -f 	$WORKING_DIR/vim             $HOME/.config/nvim
+ln -s -f 	$WORKING_DIR/vim/vimrc       $HOME/.config/nvim/init.vim
+ln -s -f 	$WORKING_DIR/ranger/rc.conf  $HOME/.config/ranger/rc.conf
+ln -s -f 	$WORKING_DIR/termite         $HOME/.config/termite
 
-cd "${BASEDIR}"
-git submodule update --init --recursive "${DOTBOT_DIR}"
+echo "Installing packages via pacman"
+sudo pacman --noconfirm -S ttf-hack noto-fonts \
+                           openssh gcc pkgconfig fakeroot \
+                           numlockx vim neovim tmux fish \
+                           python python-neovim python-pip \
+			                     rustup npm
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+echo "Installing Rust with rustup"
+rustup default stable
+rustup component add rust-analyzer
+
+echo "Installing packages with cargo"
+cargo install ripgrep bat cargo-edit cargo-watch paru
+
+echo "Installing plugins for nvim"
+vim +PlugClean +PlugInstall +UpdateRemotePlugins +qall
+
+echo "Configuring git editor"
+git config --global core.editor nvim
+
+# X-ORG AwesomeWM Installation
+sudo pacman --noconfirm -S xorg-server
+
+echo "Changing the user's shell to fish"
+chsh -s /usr/bin/fish
+ln -s $HOME/.config/fish/fishd.Hostname $HOME/.config/fish/fishd.$HOSTNAME

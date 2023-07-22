@@ -21,6 +21,7 @@ local string = string
 
 local awful = require("awful")
 local redutil = require("redflat.util")
+local naughty = require("naughty")
 
 -- Initialize tables for module
 -----------------------------------------------------------------------------------------------------------------------
@@ -581,6 +582,11 @@ function system.pformatted.bat(crit)
 
 	return function(arg)
 		local state = system.battery(arg)
+
+    if state[2] < crit then
+      naughty.notify({ title = "Battery usage at " .. state[2] .. "%" })
+    end
+
 		return {
 			value = state[2] / 100,
 			text  = state[1] .. "  " .. state[2] .. "%  " .. state[3],

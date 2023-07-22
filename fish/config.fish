@@ -4,13 +4,13 @@ set -x -g PATH $PATH $HOME/.local/bin
 set -x -g PATH $PATH $HOME/.cargo/bin
 
 ### Environment ###
-set -x -g SHELL (which fish)
+set -x -g SHELL (type -P fish)
 set -x -g EDITOR nvim
 set -x -g TERM xterm-256color
 
 ### Aliases ###
 # Use Nvim if Exists
-if which nvim > /dev/null 2>&1
+if type -P nvim > /dev/null 2>&1
   alias vim "nvim"
 end
 

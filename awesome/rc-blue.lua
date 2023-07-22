@@ -167,8 +167,15 @@ mail.buttons = awful.util.table.join(
 local sysmon = { widget = {}, buttons = {}, icon = {} }
 
 -- icons
+sysmon.icon.battery = redflat.util.table.check(beautiful, "icon.widget.battery")
 sysmon.icon.network = redflat.util.table.check(beautiful, "icon.widget.wireless")
 sysmon.icon.cpuram = redflat.util.table.check(beautiful, "icon.widget.monitor")
+
+-- battery
+sysmon.widget.battery = redflat.widget.sysmon(
+  { func = redflat.system.pformatted.bat(15), arg = "BAT1" },
+  { timeout = 60, widget = redflat.gauge.icon.single, monitor = { is_vertical = true, icon = sysmon.icon.battery } }
+)
 
 -- network speed
 sysmon.widget.network = redflat.widget.net(
@@ -218,7 +225,7 @@ awful.screen.connect_for_each_screen(
 		env.wallpaper(s)
 
 		-- tags
-		awful.tag({ "Main", "Dev", "Net", "Fox", "Comm", "Misc" }, s, { al[5], al[5], al[5], al[5], al[5], al[5] })
+		awful.tag({ "DEV", "NET", "FOX", "COMM", "MISC" }, s, { al[5], al[5], al[5], al[5], al[5] })
 
 		-- layoutbox widget
 		layoutbox[s] = redflat.widget.layoutbox({ screen = s })
@@ -266,6 +273,7 @@ awful.screen.connect_for_each_screen(
 				separator,
 				env.wrapper(tray.widget, "tray", tray.buttons),
         separator,
+				env.wrapper(sysmon.widget.battery, "battery"),
 			},
 		}
 	end

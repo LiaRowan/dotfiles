@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+paru --noconfirm -S xorg-server xorg-xinit xorg-xset xorg-setxkbmap xorg-xinput xorg-xbacklight \
+                    awesome xcompmgr numlockx network-manager-applet \
+                    termite firefox discord telegram-desktop
