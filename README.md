@@ -1,4 +1,4 @@
-# Leo Rowan's Dotfiles
+# Lia Rowan's Dotfiles
 
 These are my personal dotfiles. Feel free to have a look and grab anything you like. I try to keep
 it pretty well commented.
@@ -11,10 +11,10 @@ systems, currently `macOS` and `ubuntu`.
 To install:
 
 ```
-sudo pacman -S git python
-git clone https://github.com/LeoRowan/dotfiles ~/.dotfiles
+sudo apt install git python3
+git clone https://github.com/LiaRowan/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-./install
+./install.sh
 ```
 
 This will symlink all config files and install useful tools and plugins. Then run the following

@@ -15,7 +15,7 @@ function fish_prompt --description 'Write out the prompt'
         set last_status_color normal
     end
 
-    echo -ns (set_color $yellow --bold) "$USER" @ (prompt_hostname) (set_color normal) ':'
+    echo -ns (set_color $yellow --bold) "$USER:"
     echo -ns (set_color $orange --bold) (prompt_pwd) (set_color normal)
     echo -ns (set_color $last_status_color) '$ ' (set_color normal)
 end
