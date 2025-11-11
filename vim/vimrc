@@ -16,6 +16,7 @@ Plug 'mhartington/oceanic-next'
 
 " plugins
 Plug 'airblade/vim-gitgutter'
+Plug 'carlsmedstad/vim-bicep'
 Plug 'cespare/vim-toml'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
